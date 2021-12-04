@@ -44,11 +44,16 @@ public class ArrayList<T> {
         if (data == null) {
             throw new IllegalArgumentException("Error: cannot add null data.");
         }
-        if (checkIfFull()) {
+        if (checkIfFull() == true) {
             resize(size);
         }
-
-
+        T[] addedToArray = (T[]) new Object[backingArray.length];
+        addedToArray[0] = data;
+        for (int i = 0; i < size; i ++) {
+            addedToArray[i + 1] = backingArray[i];
+        }
+        backingArray = addedToArray;
+        size++;
     }
 
     /**
@@ -64,6 +69,11 @@ public class ArrayList<T> {
         if (data == null) {
             throw new IllegalArgumentException("Error: cannot add null data.");
         }
+        if (checkIfFull() == true) {
+            resize(size);
+        }
+        backingArray[size] = data;
+        size++;
     }
 
     /**
@@ -80,6 +90,17 @@ public class ArrayList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (size == 0) {
+            throw new NoSuchElementException("The ListArray is empty.");
+        }
+        T res = backingArray[0];
+        T[] newRemovedArray = (T[]) new Object[backingArray.length];
+        size--;
+        for (int i = 1; i < size; i++) {
+            newRemovedArray[i-1] = backingArray[i];
+        }
+        backingArray = newRemovedArray;
+        return res;
     }
 
     /**
@@ -94,6 +115,13 @@ public class ArrayList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (size == 0) {
+            throw new NoSuchElementException("The ListArray is empty.");
+        }
+        T res = backingArray[size-1];
+        backingArray[size-1] = null;
+        size--;
+        return res;
     }
 
     /**
@@ -146,9 +174,4 @@ public class ArrayList<T> {
             return false;
         }
     }
-
-    /**
-     * Ensures resizing is taken care of.
-     *  USE THIS METHOD TO COMBINE THE TWO ABOVE SO I CAN USE ONE HELPER METHOD IN ADD()
-     */
 }
