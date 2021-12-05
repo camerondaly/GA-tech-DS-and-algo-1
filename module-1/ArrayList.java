@@ -95,10 +95,10 @@ public class ArrayList<T> {
         }
         T res = backingArray[0];
         T[] newRemovedArray = (T[]) new Object[backingArray.length];
-        size--;
         for (int i = 1; i < size; i++) {
             newRemovedArray[i-1] = backingArray[i];
         }
+        size--;
         backingArray = newRemovedArray;
         return res;
     }
