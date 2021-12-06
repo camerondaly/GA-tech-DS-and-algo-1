@@ -151,7 +151,7 @@ public class ArrayList<T> {
     }
 
     /** 
-     * I ADDED ALL OF THE METHODS BELOW THIS -- WILL IT MAKE ME FAIL THE ASSIGNEMTN AUTO-GRADER??
+     * I ADDED ALL OF THE METHODS BELOW THIS -- WILL IT MAKE ME FAIL THE ASSIGNMENT AUTO-GRADER??
      * 
      * Resizes the backingArray by assigning it to a new array of size (2 * prevcap).
      * 
