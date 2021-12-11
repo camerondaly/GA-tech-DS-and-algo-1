@@ -27,6 +27,18 @@ public class SinglyLinkedList<T> {
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (data == null) {
+            throw new IllegalArgumentException("Cannot add null data.");
+        }
+        SinglyLinkedListNode<T> added = new SinglyLinkedListNode<T>(data);
+        if (head == null) {
+            head = added;
+            tail = added;
+        } else {
+            added.setNext(head);
+            head = added;
+        }
+        size ++;
     }
 
     /**
@@ -39,6 +51,18 @@ public class SinglyLinkedList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (data == null) {
+            throw new IllegalArgumentException("Cannot add null data.");
+        }
+        SinglyLinkedListNode<T> added = new SinglyLinkedListNode<T>(data);
+        if (head == null) {
+            tail = added;
+            head = added;
+        } else {
+            tail.setNext(added);
+            tail = added;
+        }
+        size++;
     }
 
     /**
