@@ -78,14 +78,15 @@ public class SinglyLinkedList<T> {
         if (head == null) {
             throw new NoSuchElementException("The list is already empty.");
         }
-        SinglyLinkedListNode<T> removed = head;
+        T res = head.getData();
         if (head.getNext() == null) {
             head = null;
             tail = null;
         } else {
             head = head.getNext();
         }
-        return removed.getData();
+        size--;
+        return res;
     }
 
     /**
@@ -98,6 +99,26 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (head == null) {
+            throw new NoSuchElementException("The list is already empty.");
+        }
+        if (size == 1) {
+            T res = head.getData();
+            head = null;
+            tail = null;
+            size--;
+            return res;
+        } else {
+            SinglyLinkedListNode<T> curr = head;
+            while (curr.getNext() != tail) {
+                curr = curr.getNext();
+            }
+            T res = tail.getData();
+            tail = curr;
+            tail.setNext(null);
+            size--;
+            return res;
+        }
     }
 
     /**
