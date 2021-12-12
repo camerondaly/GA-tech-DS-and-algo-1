@@ -75,6 +75,17 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (head == null) {
+            throw new NoSuchElementException("The list is already empty.");
+        }
+        SinglyLinkedListNode<T> removed = head;
+        if (head.getNext() == null) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.getNext();
+        }
+        return removed.getData();
     }
 
     /**
