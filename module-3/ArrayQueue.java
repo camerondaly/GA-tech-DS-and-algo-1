@@ -45,6 +45,23 @@ public class ArrayQueue<T> {
      */
     public void enqueue(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (size == backingArray.length) {
+            T[] newArray = (T[]) new Object[backingArray.length * 2];
+            for (int i = front; i < size; i++) {
+                newArray[i - front] = backingArray[i];
+            }
+            for (int i = 0; i < front; i++) {
+                newArray[i + front] = backingArray[i];
+            }
+            backingArray[size] = data;
+            front = 0;
+            size++;
+            return;
+        } else {
+            backingArray[(front + size) % backingArray.length] = data;
+            size++; 
+            return;
+        }
     }
 
     /**
