@@ -3,6 +3,13 @@ public class ArrayQueueTests {
         ArrayQueue<Object> myQueue = new ArrayQueue<>();
 
         myQueue.enqueue(0);
+        printArrayQueue(myQueue);
+        myQueue.enqueue(1);
+        printArrayQueue(myQueue);
+
+        ArrayQueue <Object> fullQueue = getFullArrayQueue();
+        printArrayQueue(fullQueue);
+
     }
     public static void printBackingArray(ArrayQueue<Object> myQueue) {
         Object[] backingArray = myQueue.getBackingArray();
@@ -20,9 +27,11 @@ public class ArrayQueueTests {
         System.out.println("The ArrayQueue's size is: " + ((Integer)myQueue.size()).toString());
     }
 
-    public static void getFullArrayQueue() {
+    public static ArrayQueue<Object> getFullArrayQueue() {
+        ArrayQueue<Object> newQueue = new ArrayQueue<>();
         for (int i = 0; i < 9; i++) {
-            
+            newQueue.enqueue(i);
         }
+        return newQueue;
     }
 }
