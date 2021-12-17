@@ -45,6 +45,9 @@ public class ArrayQueue<T> {
      */
     public void enqueue(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (data == null){
+            throw new IllegalArgumentException("Data cannot be null.");
+        }
         if (size == backingArray.length) {
             T[] newArray = (T[]) new Object[backingArray.length * 2];
             for (int i = front; i < size; i++) {
