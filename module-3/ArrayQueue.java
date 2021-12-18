@@ -54,8 +54,9 @@ public class ArrayQueue<T> {
                 newArray[i - front] = backingArray[i];
             }
             for (int i = 0; i < front; i++) {
-                newArray[i + front] = backingArray[i];
+                newArray[i + backingArray.length - front] = backingArray[i];
             }
+            backingArray = newArray;
             backingArray[size] = data;
             front = 0;
             size++;
