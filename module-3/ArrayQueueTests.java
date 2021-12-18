@@ -6,8 +6,12 @@ public class ArrayQueueTests {
         printBackingArray(myQueue);
         myQueue.enqueue(1);
         printBackingArray(myQueue);
+        myQueue.dequeue();
+        printBackingArray(myQueue);
+        myQueue.enqueue(123);
+        printBackingArray(myQueue);
 
-        System.out.println("Initializing new, full array w 9 elements...");
+        System.out.println("Initializing new, full array with 9 elements...");
         ArrayQueue <Object> fullQueue = getFullArrayQueue();
         printBackingArray(fullQueue);
 
@@ -16,9 +20,11 @@ public class ArrayQueueTests {
         Object[] backingArray = myQueue.getBackingArray();
         System.out.println("The ArrayQueue's size is: " + ((Integer)myQueue.size()).toString());
         String stringArray = "";
-        for (int i = 0; i < myQueue.size(); i++) {
-            stringArray = stringArray.concat(backingArray[i].toString());
-            stringArray = stringArray.concat(" ");
+        for (int i = 0; i < backingArray.length; i++) {
+            if (backingArray[i] != null) {
+              stringArray = stringArray.concat(backingArray[i].toString());
+                stringArray = stringArray.concat(" ");  
+            }
         }
         System.out.println("The backingArray is: " + stringArray);
         System.out.println("The backingArray's capacity is: " + ((Integer)backingArray.length).toString() + "\n");
